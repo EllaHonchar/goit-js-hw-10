@@ -11,16 +11,15 @@ const DEBOUNCE_DELAY = 300;
 
 countryInput.addEventListener('input', debounce(onCountryInput, DEBOUNCE_DELAY));
 
-function onCountryInput () {
-    const newName = countryInput.value.trim();
+function onCountryInput() {
+    const name = countryInput.value.trim();
 
-    if(newName === '') {
+    if(name === '') {
         return (countryList.innerHTML = ''),
         (countryInfo.innerHTML = '');
     }
 
-
-fetchCountries(newName)
+fetchCountries(name)
 .then(country => {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
@@ -36,8 +35,6 @@ fetchCountries(newName)
 })
   .catch(wrongNameAlert);
 }
-
-
 
 function manyMatchesAlert() {
     Notiflix.Notify.info("Too many matches found. Please enter a more specific name.");
@@ -78,5 +75,11 @@ function markupCountryInfo(country) {
 
 
 function wrongNameAlert() {
+    clearData();
     Notiflix.Notify.failure("Oops, there is no country with that name");
+}
+
+function  clearData() {
+    countryInfo.innerHTML = '';
+    countryInfo.innerHTML = '';
 }
