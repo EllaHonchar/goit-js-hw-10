@@ -73,13 +73,12 @@ function markupCountryInfo(country) {
   return layoutCountryInfo;
 }
 
-
 function wrongNameAlert() {
-    clearData();
     Notiflix.Notify.failure("Oops, there is no country with that name");
+    clearData();
 }
 
 function  clearData() {
-    countryInfo.innerHTML = '';
-    countryInfo.innerHTML = '';
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 }
